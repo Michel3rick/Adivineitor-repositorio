@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adivinator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Adivinator</h1>
+    
+    <div id="register">
+        <p>Ingresa tu nombre para jugar:</p>
+        <input type="text" id="username" placeholder="Tu nombre">
+        <p>Selecciona dificultad:</p>
+        <select id="difficulty">
+            <option value="easy.json">Fácil</option>
+            <option value="normal.json">Normal</option>
+            <option value="hard.json">Difícil</option>
+        </select>
+        <button onclick="registerUser()">Empezar</button>
+    </div>
+    
+    <div id="game" style="display: none;">
+        <p>Jugador: <span id="playerName"></span></p>
+        <p id="score">Puntaje: 0</p>
+        <p><strong>Nivel actual:</strong> <span id="rank">Pollo</span></p>
+        <p><strong>Pista:</strong> <span id="hintText"></span></p>
+        <p id="word"></p>
+        <p id="timer">Tiempo restante: 20</p>
+        <input type="text" id="guess" placeholder="Escribe tu respuesta aquí">
+        <button onclick="checkAnswer()">Adivinar</button>
+        <p id="result"></p>
+    </div>
+
+    <!-- Pantalla de derrota -->
+    <div id="gameOver" style="display: none;">
+        <h2>¡Perdiste! Lo harás mejor la próxima</h2>
+        <p><strong>Jugador:</strong> <span id="finalPlayerName"></span></p>
+        <p><strong>Dificultad:</strong> <span id="finalDifficulty"></span></p>
+        <p><strong>Puntaje obtenido:</strong> <span id="finalScore"></span></p>
+        <p><strong>Nivel alcanzado:</strong> <span id="finalRank"></span></p>
+        <button onclick="restartGame()">Jugar de nuevo</button>
+        <button onclick="goToMainMenu()">Volver al inicio</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

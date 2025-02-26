@@ -1,0 +1,77 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+#word {
+    font-size: 24px;
+    margin: 20px;
+    font-weight: bold;
+}
+
+#hint {
+    font-size: 18px;
+    color: blue;
+    margin: 10px;
+}
+
+#timer {
+    font-size: 20px;
+    color: red;
+    font-weight: bold;
+}
+
+#score {
+    font-size: 20px;
+    color: green;
+    font-weight: bold;
+}
+
+input, button {
+    font-size: 18px;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Pantalla de derrota */
+
+#gameOver {
+    display: none;
+    width: 50%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f8f9fa; /* Color de fondo suave */
+    border: 2px solid #333; /* Borde sólido */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2); /* Sombra */
+    text-align: center;
+}
+
+#gameOver p {
+    font-size: 20px;
+}
+
+#gameOver p strong {
+    font-weight: bold;
+}
+
+
