@@ -133,4 +133,22 @@ footer {
     font-size: 12px;
 }
 
+.corner-image-container {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    text-align: center;
+}
+
+.corner-header {
+    margin: 0;
+    font-size: 16px;
+    max-width: 250px; 
+}
+
+.corner-image {
+    width: 100px; /* Ajusta el tamaño según necesites */
+    height: auto;
+    border-radius: 10px;
+}
 
