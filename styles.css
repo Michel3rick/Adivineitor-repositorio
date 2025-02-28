@@ -17,6 +17,25 @@ h1 {
     border: 1px solid #ccc;
 }
 
+h1 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 2.5rem;
+    text-align: center;
+    color: #146f9c; /* Azul oscuro para que destaque más */
+    position: relative;
+    animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 5px #00aaff, 0 0 10px #0088cc, 0 0 15px #5597ee;
+    }
+    100% {
+        text-shadow: 0 0 8px #00ccff, 0 0 12px #0099dd, 0 0 20px #0077aa;
+    }
+}
+
+
 #word {
     font-size: 24px;
     margin: 20px;
@@ -31,13 +50,13 @@ h1 {
 
 #timer {
     font-size: 20px;
-    color: red;
+    color:   #0056b3;
     font-weight: bold;
 }
 
 #score {
     font-size: 20px;
-    color: green;
+    color: #00aaff;
     font-weight: bold;
 }
 
@@ -86,8 +105,6 @@ button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Centra verticalmente en toda la pantalla */
-    flex-direction: column; /* Asegura que todo dentro se alinee correctamente */
     text-align: center; 
 }
 
@@ -96,7 +113,6 @@ button:hover {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 15px;
     background-color: #f8f9fa; /* Color de fondo suave */
     border: 2px solid #333; /* Borde sólido */
     border-radius: 10px;
@@ -108,19 +124,31 @@ button:hover {
     width: 80%;
     max-width: 500px; /* Limita el tamaño para que no sea demasiado ancho */
     border-collapse: collapse;
-    margin: 0 auto; /* Asegura que esté centrado horizontalmente */
 }
 
 #rankingTable th, #rankingTable td {
     border: 1px solid black;
-    padding: 6px;
+    padding: 3px;
     text-align: center;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 #rankingTitle {
-    font-size: 24px;
-    margin-bottom: 15px;
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.ranking-buttons {
+    display: flex;
+    justify-content: center; /* Centra los botones */
+    gap: 20px; /* Espacio entre los botones */
+    margin-top: 20px; /* Espacio arriba */
+}
+
+.ranking-buttons button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 footer {
@@ -151,4 +179,3 @@ footer {
     height: auto;
     border-radius: 5px;
 }
-
