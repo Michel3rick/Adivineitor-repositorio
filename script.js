@@ -9,6 +9,7 @@ let selectedDifficulty = "easy.json";
 function registerUser() {
     let username = document.getElementById("username").value.trim();
     selectedDifficulty = document.getElementById("difficulty").value;
+    document.getElementById("currentDifficulty").innerText = document.getElementById("difficulty").options[document.getElementById("difficulty").selectedIndex].text;
 
     if (username === "") {
         alert("Por favor, ingresa tu nombre.");
@@ -160,12 +161,66 @@ function getRank(score) {
     return "🦅 Águila";
 }
 
+function showRanking() {
+    const url = "https://script.google.com/macros/s/AKfycbyr_OOk7XDr_Ug_oR4Gmohwd_x0w2CttFsPH0prHjQwO3GrvHJACiNOHsHwgipsDlMTwA/exec"; // URL de tu API
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            const rankingTable = document.getElementById("rankingTable");
+            rankingTable.innerHTML = "<tr><th>#</th><th>Nombre</th><th>Dificultad</th><th>Nivel</th><th>Puntaje</th></tr>";
+
+            const lastPlayer = document.getElementById("finalPlayerName").innerText;
+            const lastDifficulty = document.getElementById("finalDifficulty").innerText;
+            const lastScore = parseInt(document.getElementById("finalScore").innerText);
+
+            // Filtrar solo jugadores de la misma dificultad
+            let filteredPlayers = data.filter(player => player.Dificultad === lastDifficulty);
+
+            // Ordenar por puntaje de mayor a menor
+            filteredPlayers.sort((a, b) => b.Puntaje - a.Puntaje);
+
+            // Tomar solo los 9 mejores
+            let topPlayers = filteredPlayers.slice(0, 9);
+
+            // Verificar si el usuario actual está en el top 9
+            let userExistsInTop = topPlayers.some(player => player.Nombre === lastPlayer && player.Puntaje === lastScore);
+
+            // Si el usuario no está en el top 9, agregarlo aparte
+            if (!userExistsInTop) {
+                const userEntry = filteredPlayers.find(player => player.Nombre === lastPlayer && player.Puntaje === lastScore);
+                if (userEntry) {
+                    topPlayers.push(userEntry);
+                }
+            }
+
+            // Generar la tabla con los datos
+            topPlayers.forEach((player, index) => {
+                let isUser = player.Nombre === lastPlayer && player.Puntaje === lastScore;
+                let row = `<tr ${isUser ? 'style="font-weight: bold; text-decoration: underline;"' : ''}>
+                    <td>${index + 1}</td>
+                    <td>${player.Nombre}</td>
+                    <td>${player.Dificultad}</td>
+                    <td>${player.Nivel}</td>
+                    <td>${player.Puntaje}</td>
+                </tr>`;
+                rankingTable.innerHTML += row;
+            });
+
+            document.getElementById("rankingScreen").style.display = "block";
+            document.getElementById("gameOver").style.display = "none";
+        })
+        .catch(error => console.error("Error al cargar el ranking:", error));
+}
+
+
 // Reinicia el juego con el mismo usuario
 function restartGame() {
     score = 0;
     document.getElementById("score").innerText = "Puntaje: " + score;
     document.getElementById("rank").innerText = getRank(score);
     document.getElementById("gameOver").style.display = "none";
+    document.getElementById("rankingScreen").style.display = "none"; // Ocultar ranking
     document.getElementById("game").style.display = "block";
     startGame();
 }
@@ -174,5 +229,7 @@ function restartGame() {
 function goToMainMenu() {
     document.getElementById("gameOver").style.display = "none";
     document.getElementById("game").style.display = "none";
+    document.getElementById("rankingScreen").style.display = "none"; // Ocultar ranking
     document.getElementById("register").style.display = "block";
 }
+
