@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function saveScore() {
-    const url = "https://script.google.com/macros/s/AKfycbyPMb5Iqft7LBPpkA3ky-gaL5yvj1CiFI9mM_HZoUQhaeHVzjhgkWEh8UzSBA4qFelKmA/exec"; // Reemplázalo con tu URL real
+    const url = "https://script.google.com/macros/s/AKfycbxCaqY4ToQbppJAjLKDSZQPYMkEWr-fF0wwRQeMo0IKWwhzrWA3GfjP01UYUjht6YYVcA/exec"; // Reemplázalo con tu URL real
 
     const data = {
         "Nombre": document.getElementById("playerName").innerText,
@@ -178,4 +178,3 @@ function goToMainMenu() {
     document.getElementById("game").style.display = "none";
     document.getElementById("register").style.display = "block";
 }
-
