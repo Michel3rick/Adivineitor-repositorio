@@ -1,77 +1,69 @@
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #f4f4f4;
-    padding: 20px;
-}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adivineitor</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
 
-h1 {
-    color: #333;
-}
+<body>
+    <h1>Adivineitor</h1>
+    
+    <div id="register">
+        <p>Ingresa tu nombre para jugar:</p>
+        <input type="text" id="username" placeholder="Tu nombre">
+        <p>Selecciona dificultad:</p>
+        <select id="difficulty">
+            <option value="easy.json">Fácil</option>
+            <option value="normal.json">Normal</option>
+            <option value="hard.json">Difícil</option>
+        </select>
+        <button onclick="registerUser()">Empezar</button>
+    </div>
+    
+    <div id="game" style="display: none;">
+        <p><strong>Jugador:</strong> <span id="playerName"></span></p>
+        <p id="score">Puntaje: 0</p>
+        <p><strong>Nivel actual:</strong> <span id="rank">Pollo</span></p>
+        <p><strong>Pista:</strong> <span id="hintText"></span></p>
+        <p id="word"></p>
+        <p id="timer">Tiempo restante: 20</p>
+        <input type="text" id="guess" placeholder="Escribe tu respuesta aquí">
+        <button onclick="checkAnswer()">Adivinar</button>
+        <p id="result"></p>
+        <p><strong>Dificultad:</strong> <span id="currentDifficulty"></span></p>
+    </div>
 
-#word {
-    font-size: 24px;
-    margin: 20px;
-    font-weight: bold;
-}
+    <!-- Pantalla de derrota -->
+    <div id="gameOver" style="display: none;">
+        <h2>¡Perdiste! Lo harás mejor la próxima</h2>
+        <p><strong>Jugador:</strong> <span id="finalPlayerName"></span></p>
+        <p><strong>Dificultad:</strong> <span id="finalDifficulty"></span></p>
+        <p><strong>Puntaje obtenido:</strong> <span id="finalScore"></span></p>
+        <p><strong>Nivel alcanzado:</strong> <span id="finalRank"></span></p>
+        <button onclick="showRanking()">Mostrar Ranking</button>
+        <button onclick="restartGame()">Jugar de nuevo</button>
+        <button onclick="goToMainMenu()">Volver al inicio</button>
+    </div>
 
-#hint {
-    font-size: 18px;
-    color: blue;
-    margin: 10px;
-}
+    <div id="rankingScreen" style="display: none;">
+        <div id="rankingContainer">
+            <h2 id="rankingTitle">🏆 Ranking de Jugadores</h2>
+            <table id="rankingTable">
+                <!-- Aquí se insertarán los datos -->
+            </table>
+            <p>Solo aparece el puntaje máximo obtenido por usuario</p>
+            <button onclick="restartGame()">Jugar de nuevo</button>
+            <button onclick="goToMainMenu()">Volver al inicio</button>
+        </div>
+    </div>
 
-#timer {
-    font-size: 20px;
-    color: red;
-    font-weight: bold;
-}
+    <script src="script.js"></script>
 
-#score {
-    font-size: 20px;
-    color: green;
-    font-weight: bold;
-}
-
-input, button {
-    font-size: 18px;
-    padding: 10px;
-    margin: 5px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-button {
-    cursor: pointer;
-    background-color: #007bff;
-    color: white;
-    border: none;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-/* Pantalla de derrota */
-
-#gameOver {
-    display: none;
-    width: 50%;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #f8f9fa; /* Color de fondo suave */
-    border: 2px solid #333; /* Borde sólido */
-    border-radius: 10px; /* Bordes redondeados */
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2); /* Sombra */
-    text-align: center;
-}
-
-#gameOver p {
-    font-size: 20px;
-}
-
-#gameOver p strong {
-    font-weight: bold;
-}
-
+    <footer>
+    <p>Elaborado por el grupo de Ingeniería de Software: LosSinNombre© 2025<p>
+    </footer>
+</body>
+</html>
 
