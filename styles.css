@@ -135,14 +135,14 @@ footer {
 
 .corner-image-container {
     position: fixed;
-    bottom: 10px;
+    bottom: 20px;
     right: 10px;
     text-align: center;
 }
 
 .corner-header {
     margin: 0;
-    font-size: 14px;
+    font-size: 12px;
     max-width: 200px; 
 }
 
@@ -151,3 +151,4 @@ footer {
     height: auto;
     border-radius: 5px;
 }
+
