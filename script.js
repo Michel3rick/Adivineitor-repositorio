@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function saveScore() {
-    const url = "https://script.google.com/macros/s/AKfycbxCaqY4ToQbppJAjLKDSZQPYMkEWr-fF0wwRQeMo0IKWwhzrWA3GfjP01UYUjht6YYVcA/exec"; // Reemplázalo con tu URL real
+    const url = "https://script.google.com/macros/s/AKfycbyr_OOk7XDr_Ug_oR4Gmohwd_x0w2CttFsPH0prHjQwO3GrvHJACiNOHsHwgipsDlMTwA/exec"; // Reemplázalo con tu URL real
 
     const data = {
         "Nombre": document.getElementById("playerName").innerText,
@@ -135,8 +135,8 @@ function checkAnswer() {
 
 // Muestra la pantalla de derrota
 function endGame() {
+    saveScore(); // <-- Guarda el puntaje en Google Sheets
     document.getElementById("result").innerText = "⏳ Tiempo agotado. La palabra era: " + currentWord;
-
     setTimeout(() => {
         document.getElementById("game").style.display = "none";
         document.getElementById("gameOver").style.display = "block";
@@ -145,8 +145,6 @@ function endGame() {
         document.getElementById("finalDifficulty").innerText = document.getElementById("difficulty").options[document.getElementById("difficulty").selectedIndex].text;
         document.getElementById("finalScore").innerText = score;
         document.getElementById("finalRank").innerText = getRank(score);
-
-        saveScore(); // <-- Guarda el puntaje en Google Sheets
 
     }, 4000);
 }
