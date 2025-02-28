@@ -22,6 +22,47 @@ function registerUser() {
     startGame();
 }
 
+document.addEventListener("DOMContentLoaded", function() {
+    // Detectar "Enter" en el input de nombre para iniciar el juego
+    document.getElementById("username").addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            registerUser();
+        }
+    });
+
+    // Detectar "Enter" en el input de respuesta para verificar la palabra
+    document.getElementById("guess").addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            checkAnswer();
+        }
+    });
+});
+
+function saveScore() {
+    const url = "https://script.google.com/macros/s/AKfycbyPMb5Iqft7LBPpkA3ky-gaL5yvj1CiFI9mM_HZoUQhaeHVzjhgkWEh8UzSBA4qFelKmA/exec"; // Reemplázalo con tu URL real
+
+    const data = {
+        "Nombre": document.getElementById("playerName").innerText,
+        "Dificultad": document.getElementById("difficulty").options[document.getElementById("difficulty").selectedIndex].text,
+        "Nivel": getRank(score),
+        "Puntaje": score
+    };
+
+    fetch(url, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    }).then(() => {
+        console.log("Datos enviados correctamente.");
+    }).catch(error => {
+        console.error("Error al enviar datos:", error);
+    });
+}
+
+
 // Inicia una nueva ronda
 function startGame() {
     fetch(selectedDifficulty)
@@ -86,7 +127,7 @@ function checkAnswer() {
         document.getElementById("score").innerText = "Puntaje: " + score;
         document.getElementById("rank").innerText = getRank(score);
         document.getElementById("result").innerText = "✅ ¡Correcto!";
-        setTimeout(startGame, 1500); // Inicia una nueva ronda después de 1.5s
+        setTimeout(startGame, 500); // Inicia una nueva ronda después de 1.5s
     } else {
         document.getElementById("result").innerText = "❌ Incorrecto, intenta de nuevo.";
     }
@@ -104,15 +145,21 @@ function endGame() {
         document.getElementById("finalDifficulty").innerText = document.getElementById("difficulty").options[document.getElementById("difficulty").selectedIndex].text;
         document.getElementById("finalScore").innerText = score;
         document.getElementById("finalRank").innerText = getRank(score);
-        
+
+        saveScore(); // <-- Guarda el puntaje en Google Sheets
+
     }, 4000);
 }
 
+
 // Devuelve el rango según el puntaje
 function getRank(score) {
-    if (score < 500) return "🐣 Pollo";
-    if (score < 1000) return "🐥 Gallito";
-    return "🐓 Gallo";
+    if (score < 150) return "🥚 Huevo";
+    if (score < 400) return "🐥 Pollo";
+    if (score < 800) return "🐔 Gallina";
+    if (score < 1500) return "🐓 Gallo";
+    if (score < 2500) return "🦉 Búho";
+    return "🦅 Águila";
 }
 
 // Reinicia el juego con el mismo usuario
@@ -131,3 +178,4 @@ function goToMainMenu() {
     document.getElementById("game").style.display = "none";
     document.getElementById("register").style.display = "block";
 }
+
