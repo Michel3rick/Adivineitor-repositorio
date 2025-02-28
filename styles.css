@@ -142,13 +142,13 @@ footer {
 
 .corner-header {
     margin: 0;
-    font-size: 16px;
-    max-width: 250px; 
+    font-size: 14px;
+    max-width: 200px; 
 }
 
 .corner-image {
-    width: 100px; /* Ajusta el tamaño según necesites */
+    width: 80px; /* Ajusta el tamaño según necesites */
     height: auto;
+    margin-top: 5px;
     border-radius: 10px;
 }
-
