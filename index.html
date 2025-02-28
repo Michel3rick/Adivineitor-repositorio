@@ -8,8 +8,8 @@
 </head>
 
 <body>
-    <h1>Adivineitor</h1>
-    
+    <h1 id="gameTitle">Adivineitor</h1>
+
     <div id="register">
         <p>Ingresa tu nombre para jugar:</p>
         <input type="text" id="username" placeholder="Tu nombre">
@@ -49,13 +49,15 @@
 
     <div id="rankingScreen" style="display: none;">
         <div id="rankingContainer">
-            <h2 id="rankingTitle">🏆 Ranking de Jugadores</h2>
+            <h4 id="rankingTitle">🏆 Ranking de Jugadores</h4>
             <table id="rankingTable">
                 <!-- Aquí se insertarán los datos -->
+                <p> Solo aparece el puntaje máximo obtenido por usuario</p>
             </table>
-            <p>Solo aparece el puntaje máximo obtenido por usuario</p>
-            <button onclick="restartGame()">Jugar de nuevo</button>
-            <button onclick="goToMainMenu()">Volver al inicio</button>
+            <div class="ranking-buttons">
+                <button onclick="restartGame()">Jugar de nuevo</button>
+                <button onclick="goToMainMenu()">Volver al inicio</button>
+            </div>            
         </div>
     </div>
 
@@ -72,4 +74,3 @@
     
 </body>
 </html>
-
