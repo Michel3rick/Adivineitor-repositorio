@@ -164,9 +164,10 @@ function getRank(score) {
     if (score < 800) return "🐔 Gallina";
     if (score < 1500) return "🐓 Gallo";
     if (score < 2500) return "🦉 Búho";
-    return "🦅 Águila";
+    if (score < 5000) return "🦅 Águila";
+    if (score < 10000) return "🦖 Dinosaurio";
+    return "🐉 Dragón";
 }
-
 function showRanking() {
     const url = "https://script.google.com/macros/s/AKfycbyr_OOk7XDr_Ug_oR4Gmohwd_x0w2CttFsPH0prHjQwO3GrvHJACiNOHsHwgipsDlMTwA/exec"; // URL de tu API
 
