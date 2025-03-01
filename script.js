@@ -83,7 +83,13 @@ function startGame() {
             document.getElementById("score").innerText = "Puntaje: " + score;
             document.getElementById("rank").innerText = getRank(score);
             
-            timeLeft = 20;
+        if (selectedDifficulty.includes("easy")) {
+                timeLeft = 10;
+            } else if (selectedDifficulty.includes("normal")) {
+                timeLeft = 15;
+            } else if (selectedDifficulty.includes("hard")) {
+                timeLeft = 20;
+            }
             document.getElementById("timer").innerText = "Tiempo restante: " + timeLeft;
             startTimer();
         })
