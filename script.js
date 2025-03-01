@@ -234,9 +234,6 @@ function restartGame() {
 
 // Vuelve al menú principal
 function goToMainMenu() {
-    document.getElementById("gameOver").style.display = "none";
-    document.getElementById("game").style.display = "none";
-    document.getElementById("rankingScreen").style.display = "none"; // Ocultar ranking
-    document.getElementById("register").style.display = "block";
+    location.reload(); // Recarga la página
 }
 
